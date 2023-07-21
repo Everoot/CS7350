@@ -1,0 +1,410 @@
+\documentclass[12pt]{article}
+ 
+\newenvironment{sol}[1][Solution]{\begin{trivlist}\item[\hskip\labelsep {\bfseries #1:}]}{\end{trivlist}}
+\usepackage{minted}
+%\usemintedstyle{perldoc}
+\usemintedstyle{vs}
+\usepackage{graphicx}
+\graphicspath{./}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{times,url}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{enumerate}
+\begin{document}
+\renewcommand{\qedsymbol}{\filledbox}
+\begin{center}
+    \textbf{CS 5/7350 - Test\#2} \\
+    \textbf{April 20, 2022}
+%replace X with the appropriate number
+\end{center}
+\begin{flushright}
+Name: \underline{Bingying Liang }\\
+ID:  \underline{\ \ \ \ \ 48999397 \ \ \ \ \ }
+\end{flushright}
+\begin{enumerate}
+    \item \ [9 pts] Define the following Terms as succinctly as possible.
+    \begin{enumerate}
+        \item Algorthm
+        \begin{sol}
+            A step-by-step procedure for solving a problem in a finite amount of time.
+        \end{sol}
+        \item Dynamic Programming
+        \begin{sol}
+            A dynamic-programming algorithm solves each subsubproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer every time it solves each subsubproblem. 
+        \end{sol}
+        \item $\Phi(N)$
+        \begin{sol}
+            Euler's phi (or totient) function of a positive integer n is the number of integers in \{1,2,3,...,n\} which are relatively prime to n. This is usually denoted $\Phi(n)$.
+        \end{sol}
+        \item Longest Common Subsequence
+        \begin{sol}
+            Given two sequences X and Y, we say that a sequnence Z is common subsequence of X and Y if Z is a subsequence of both X and Y. For example, if X = \{A,B,C,D,A,B\} and Y =\{B, D, C, A, B, A\}, the sequence \{B,C,A\} is a common subsequence of both X and Y. The sequence\{B,C,A\} is not a longest common subsequence (LCS) of X and Y, however, since it has length 3 and the sequence \{B, C, B, A\}, which is also common to both sequences X and Y, has length 4. The sequence \{B, C, B, A\} is an LCS of X and Y, as is the sequence \{B, C, A, B\}, since X and Y have no common subsequence of length 5 or greater.
+        \end{sol}
+        \item NP-Hard
+        \begin{sol}
+            In computational complexity theory, NP-hardness (non-deterministic polynomial-time hardness) is the defining property of a class of problems that are informally "at least as hard as the hardest problems in `NP". A simple example of an NP-hard problem is the subset sum problem.
+        \end{sol}
+        \item Fibonacci sequence
+        \begin{sol}
+            In mathematics, the Fibonacci sequence is a sequence in which each number is the sum of the two preceding ones. Numbers that are part of the Fibonacci sequence are known as Fibonacci numbers, commonly denoted $F_n$. The sequence commonly starts from 0 and 1, although some authors start the sequence from 1 and 1 or sometimes (as did Fibonacci) from 1 and 2. Starting from 0 and 1, the first few values in the sequence are:0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144.
+        \end{sol}
+
+    \end{enumerate}
+    \item \ [6 pts] Compute the following \{note 91339 is the product of two primes 241 and 379\}:
+    \begin{enumerate}
+        \item Compute $\Phi(91339)=$
+        \begin{sol}
+            \begin{align*}
+                \Phi(91339) = \Phi(241 \times 379) = (241-1)\times(379-1)=240 \times 378 = 90720
+            \end{align*}
+        \end{sol}
+        \item For which values of $|V|$ does a cycle with V vertices have an Euler Tour \underline{ \  \ \ \ \ }
+        \begin{sol}
+            All
+        \end{sol}
+        \item Compute $_{21}C_2 = $ \underline{ \ \ \ \ \ \ }
+        \begin{sol}
+        \begin{align*}
+            _{21}C_2 = \frac{21!}{2!(21-2)!} = \frac{21\times 20 \times 19!}{2!19!}=210
+        \end{align*}
+        \end{sol}
+        
+    \end{enumerate}
+
+    \item \ [8 pts] You have 2 different dice that are not evenly weighted:
+    \begin{itemize}
+        \item Dice 1 has sides \{1, 2, 3\} and a 10\% chance of rolling a 1, a 40\% chance of rolling a 2 and a 50\% chance of rolling a 3.
+        \item Dice 2 has sides \{2,2,3,3,3,4,4\} with a 20\% chance for each 2, a 10\% chance for each 3 and a 15\% chance for each 4.
+        \item Set up the table for the dynamic programming algorithm and fill in the complete column for Dice 1 and Dice 2.
+        \item What is the probability of rolling a 5 with these dice?
+    \end{itemize}
+        \begin{sol}
+        \hspace*{\fill}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+            \hline
+                 & Die\#1 & Die \#2 & Die \#1,\#2\\
+                \hline
+                1& 10\% & 0  & 0 \\
+                \hline
+                2& 40\% &40\%  & 0\\
+                \hline
+                3& 50\% &30\% & 4\%\\
+                \hline
+                4 & 0 & 30\%  &19\% \\
+                \hline
+                5& 0 &0  & 35\% \\
+                \hline
+                6 & 0 & 0 & 27\%\\
+                \hline
+                7 & 0 & 0 & 15\%\\
+                \hline
+                Sum& 1 &1 & 1  \\
+                \hline
+            \end{tabular}
+        \end{center}
+        The probaility of rolling a 5 with these dice is 35\%.
+        \end{sol}
+
+    
+    \item \ [8 pts] Consider the heapify algorithm for creating a heap from an array of random integers:
+    \begin{enumerate}
+        \item How many swaps(maximum) may be required for an array of 3 integers?
+        \begin{sol}
+            1
+        \end{sol}
+        \item How many swaps(maximum) may be required for an array of 7 integers?
+        \begin{sol}
+        4
+        \end{sol}
+        \item How many swaps(maximum) may be required for an array of 15 integers?
+        \begin{sol}
+        11
+        \end{sol}
+        \item How many swaps(maximum) may be required for an array of 31 integer?
+        \begin{sol}
+        26
+        \end{sol}
+    \end{enumerate}
+
+
+    \item \ [8 pts] Consider the following NP completeness questions.
+    \begin{enumerate}
+        \begin{enumerate}
+        \item Assume you can solve an NP-Complete problem in polynomial time and mark the following as "true" or "false" with this assumption:
+                \begin{itemize}
+            \item All P problems can be solved in polynomial time?
+            \begin{sol}
+                true
+            \end{sol}
+            \item All NP problems can be solved in polynomial time.
+            \begin{sol}
+                true
+            \end{sol}
+            \item All NP-Complete problems can be solved in polynomial time.
+            \begin{sol}
+                true
+            \end{sol}
+            \item All NP-Hard Problems can be solved in polynomial time.
+            \begin{sol}
+                false
+            \end{sol}
+        \end{itemize}
+            \item At least 1 NP problem can be solved in polynomial time? (True or False)
+            \begin{sol}
+                True
+            \end{sol}
+            \item NP-Complete problems are in P("true" "false" or "unknown")
+            \begin{sol}
+                unknown
+            \end{sol}
+            \item Which NP-Hard Problems are also NP-Complete? ("some" "all" "none" or "unknow")
+            \begin{sol}
+                some
+            \end{sol}
+
+        \end{enumerate}
+
+    \end{enumerate}
+            \item \ [10 pts] Consider an RSA encryption system that has a public key of 479767 for the value e and 561233 for the value of the modulus N. You also saw a message that had been encrypted by the public key. The value of this encrypted message is 3.
+        \begin{enumerate}
+            \item You are able to factor N = 561233 into the product of two prime numbers 677 * 829. What is the value of the private key? Show your work including the table for computing the Extended Euclidean Algorithm.
+            \begin{sol}
+        \hspace*{\fill} \\
+        public key: (e,n) = (479767, 561233)\\
+        private key: (d,n)
+        \begin{align*}
+            &d = \frac{1}{e}\bmod \Phi(n) = \frac{1}{479767} \bmod \Phi(561233)\\
+            &\Phi(561233)= \Phi(677 \times 829)=(677-1)\times(829-1)= 676 \times 828= 559728\\
+            &\therefore d = \frac{1}{479767} \bmod 559728
+        \end{align*}
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                     & A & B&Q &R &$\alpha$ & $\beta$  \\ 
+                     \hline
+                                       -1 &  & & & & 1 & 0 \\ 
+                     \hline
+                        & 559728 & 479767 & 1 & 79961 & 0 & 1 \\ 
+                     \hline
+                            &  479767 & 79961 & 6 & 1 & 1& -1 \\ 
+                     \hline
+                            &  79961 & 1 &79961 &0 & -6 & 7 \\
+                     \hline
+                               & 79961 &0 &- &- & 479767 & -559728 \\ 
+                     \hline
+
+                \end{tabular}
+            \end{center}
+            \begin{align*}
+                &-(6) \times(559728)  + 7 \times 479767 = 1\\
+                &(-6\times 559728) \bmod 559728 +(7\times 479767)\bmod 559728 = 1\\
+                & (7\times 479767)\bmod 559728 = 1\\
+                & \because (\frac{1}{479767} \times 479767) \bmod 559728 = 1 \\
+                & \therefore d = 7\bmod 559728 = 7 \\
+            \end{align*}
+            private key: (7, 561233)
+        \end{sol}
+            \item What was the message before it was encrypted (Give an integer)
+            \begin{sol}
+            \begin{align*}
+                3^7 \bmod 561233 = 2187
+            \end{align*}
+            \end{sol}
+        \end{enumerate}
+
+    
+        \item \ [8 pts] Set up the table to find the longest increasing sub-sequence of the following sequence: 4, 6, 9, 5, 7, 8, 11, 2, 3, 13
+
+\begin{sol}
+    \hspace*{\fill}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+             4& 4& & & & & & & & & \\
+                     \hline
+             6& 4& 6 & & & & & & & & \\
+                   \hline
+             9& 4& 6 &9 & & & & & & & \\
+                     \hline
+             5& 5& 6& 9& & & & & & & \\
+                     \hline
+             7& 3& 6& 7& & & & & & & \\
+                     \hline
+             8& 3& 6& 7 &8 & & & & & & \\
+                     \hline
+             11& 3&6 &7 & 8& 11& & & & & \\
+                     \hline
+             2& 2& 6 & 7 &8 &11 & &  & & & \\
+                     \hline
+             3& 3& 6 & 7& 8&11 & & & & & \\
+                     \hline
+             13&  3& 6&7 & 8& 11&13 & & & & \\
+                     \hline
+        \end{tabular}
+    \end{center}
+    The longest incraseing subsequence is 4, 5, 7, 8, 11, 13 
+    \end{sol}
+
+        \item \ [9 pts] Consider the Levensthein Edit Distance for two strings A and B.
+        \begin{enumerate}
+            \item Write the equation describing what you would put in the table for location T[i,j].
+                    \begin{sol}
+        \hspace*{\fill}
+             \begin{minted}[frame=lines,framesep=2mm,baselinestretch=1.2,fontsize=\footnotesize,linenos]{c}
+// Base case
+if (i == 0){
+    T[i, j] = T[0,j];
+}
+if (j == 0){
+    T[i, j] = T[i,0];
+}
+
+if (Ai == Bj){
+    T[i,j] = min{T[i-1,j]+1, T[i,j-1]+1, T[i-1,j-1]};
+}else{
+    T[i,j] = min{T[i-1,j]+1, T[i, j-1]+1, T[i-1, j-1]+1};
+}
+\end{minted}
+        \end{sol}
+            \item How would you modify this equation for a different version of the Levensthein Edit Distance where substituion is not allowed?
+                    \begin{sol}
+        \hspace*{\fill}
+             \begin{minted}[frame=lines,framesep=2mm,baselinestretch=1.2,fontsize=\footnotesize,linenos]{c}
+// Base case
+if (i == 0){
+    T[i, j] = T[0,j];
+}
+if (j == 0){
+    T[i, j] = T[i,0];
+}
+
+if (Ai == Bj){
+    T[i,j] = min{T[i-1,j]+1, T[i,j-1]+1, T[i-1,j-1]};
+}else{
+    T[i,j] = min{T[i-1,j]+1, T[i, j-1]+1};
+}
+\end{minted}
+        \end{sol}
+            \item Fill in the following table for finding the regular, unmodified "Levensthein Edit Distance" for two strings, M and N
+            \begin{center}
+                M = L \ B \ B \ Y \ C \ \ \ \ \ \ \ N = L \ Z \ B \ C \ Y \ Y
+            \end{center}
+        \end{enumerate}
+
+        \item \ [6 pts] You have two strings; String A and String B.
+        \begin{itemize}
+        
+            \item The Levensthein Edit Distance between the strings is 9.
+            \item The Longest Common Subsequence between the strings is 5.
+            \item The length of String A is $<$ the length of String B
+        \end{itemize}
+            \begin{enumerate}
+                \item What is the minimun length of String A?
+                \begin{sol}
+                5
+                \end{sol}
+                \item If String A has a length of 15, what is the minimum length of string B?
+                \item If String A has a length of 15, what is the maximum length of string B?
+                \begin{sol}
+                    (b)(c): String A can not hold len=15 with LCS =5, LED =9; 14 is max
+                \end{sol}
+            \end{enumerate}
+        \item \ [6 pts] You know that problem C is NP-Complete and you want to use that to prove that problem A is NP-Complete. What two things must you show to do this?
+        \item \ [6 pts] Give an argument that sorting an array of integer is just as hard and posiibly harder than creating a Heap of that array of integers
+        \begin{sol}
+            By sorting the integers(indexed) it creates a heap. Since a solver for sorting solves the heapify problem sorting must be just as hard as harder than heapify.
+        \end{sol}
+
+        \item \ \textcolor{red}{ [8 pts] Consider the following LCS problem}
+        \begin{enumerate}
+            \item Fill in the following table for finding the longest common subsequence for two strings, M and N 
+            \begin{center}
+                M = L \ B \ B \ Y \ C \ \ \ \ \ \ \ N = L \ Z \ B \ C \ Y \ Y
+        \end{center}
+        The Shortest Common Supersequence is the shortes sequence that contains both the string M as a subsequence and the string N as a subsequence. The following would be examples:
+        \begin{center}
+            Example 1: L \ B \ Z \ B \ Y \ C \ Y \ Y  \ \ \ \ \ \ \ \ Example 2: L \ Z \ B \ B \ Y \ C \ Y \ Y 
+        \end{center}
+        \begin{sol}
+            \hspace*{\fill}
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                     &- & L & B & B & Y & C \\
+                     \hline
+                    - &0 & 0& 0&0 & 0&0 \\
+                     \hline
+                    L &0 & 1 &1 &1 &1 &1 \\
+                        \hline
+                    Z &0 &1 &1 &1 &1 &1 \\
+                        \hline
+                    B &0 &1 &2 &2 &2 &2 \\
+                        \hline
+                    C &0 & 1&2 & 2& 2& 3\\
+                     \hline
+                    Y &0 & 1& 2 & 2 & 3 &3 \\
+                     \hline
+                    Y &0 & 1& 2& 2& 3&3 \\
+                     \hline
+                \end{tabular}
+            \end{center}
+        \end{sol}
+            \item Given the length of string M, $|M|$ the length of string N, $|N|$ and the length of the longest common subsequence, $|LCS|$, write and equation for the length of the shortest common supersequence?
+            \begin{sol}
+                \begin{align*}
+                    |M|+|N| - |LCS|
+                \end{align*}
+            \end{sol}
+            \item How can you use your solution for the longest common subsequence to determine the shortes common supersequence?
+            \begin{sol}
+            \textcolor{red}{Use the LCS as `anchor points" and fill in between anchor points. For example: \\ 
+            \begin{center}
+                AxByC\\
+                AmBnC\\
+                $\rightarrow$ AxmBynC
+            \end{center}}
+            \end{sol}
+        \end{enumerate}
+
+        \item Consider the following problem:
+        \begin{enumerate}
+            \item \ \textcolor{red}{[2 pts] How many swaps may be required (maximum) to heapify an array of size $2^n -1$ integers? (You may write a summation for this)}
+            \begin{sol}
+                \begin{align*}
+                    n(\frac{0}{2}+\frac{1}{4}+\frac{2}{8}+\frac{3}{16}+\frac{4}{32}+ \dots)
+                \end{align*}
+            \end{sol}
+            \item \ [3 pts] Setup the table for the extended Euclidian algorithm and compute 
+            \begin{itemize}
+                \item $\frac{1}{21} \text{ modulo } 98$
+            \end{itemize}
+        \end{enumerate}
+        \begin{sol}
+        \hspace*{\fill}
+             \begin{center}
+                \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                     & A & B&Q &R &$\alpha$ & $\beta$  \\ 
+                     \hline
+                                       -1 &  & & & & 1 & 0 \\ 
+                     \hline
+                                & 98 & 21 & 4 & 14 & 0 & 1 \\ 
+                     \hline
+                              &  21 & 14& 1 & 7  & 1& -4 \\ 
+                     \hline
+                                   &  14&7 &2 &0 & -1&  5 \\      
+                     \hline
+                                    & 7 &0 &- &- & 3&  -14\\ 
+                     \hline
+                \end{tabular}
+            \end{center}
+            Does not exist since GCD(98,21) = 7 not 1
+        \end{sol}
+        
+        \end{enumerate}
+        
+\end{document}

@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+ 
+\newenvironment{sol}[1][Solution]{\begin{trivlist}\item[\hskip\labelsep {\bfseries #1:}]}{\end{trivlist}}
+\usepackage{minted}
+%\usemintedstyle{perldoc}
+\usemintedstyle{vs}
+\usepackage{graphicx}
+\graphicspath{./}
+\usepackage{diagbox}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage{latexsym}
+\usepackage{times,url}     % 字体
+\usepackage{cprotect}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage{tikz-qtree}
+\usepackage{forest}
+ \usepackage{multicol}
+\begin{document}
+\renewcommand{\qedsymbol}{\filledbox}
+\begin{center}
+    \textbf{CS 5/7350} \\
+    \textbf{Quiz \#4 Due Mar 8 for Completion Grade}
+%replace X with the appropriate number
+\end{center}
+\begin{flushright}
+\underline{Name \& ID: Bingying Liang \ 
+48999397 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS5350? Yes / No $\surd$}
+\end{flushright}
+
+\begin{enumerate}
+    \item \ [2.5 pt] Consider two different algorithms that each solve a different problem.
+    \begin{itemize}
+    \item Implementation $X, I_x$, solves Problem $P_x$ and Implementation $X$ is $\Theta(n)$
+    \item Implementation $Y, I_y$, solves Problem $P_y$ and Implementation $Y$ is $\Theta(2^n)$
+    \item Implementation $Z, I_z$, solves Problem $P_z$ and Implementation $Z$ is $O(n^2)$
+    \end{itemize}
+    Determine if each of these "\textbf{Yes} it is true", "\textbf{Maybe} it is true but doesn't have to be", or "\textbf{No} it is not true"
+    \begin{multicols}{2}
+    a.\underline{\ \ \ \ M \ \ \ \ } $P_x$ is harder than $P_y$ 
+    
+    b.\underline{\ \ \ \ M \ \ \ \ } $P_y$ is harder than $P_x$
+    
+    c.\underline{\ \ \ \ Y \ \ \ \ } $I_y$ is harder than $I_x$ %%%%%%%%%%M
+    
+    d.\underline{ \ \ \ \ M \ \ \ \ } $I_z$ is harder than $I_x$ %%%%%%%%%%%%%
+
+    e.\underline{ \ \ \ \ M  \ \ \ \ } Problem X is $\Omega(n)$ %%%%%%%%%%Y
+    
+    f.\underline{\ \ \ \ N \ \ \ \ } Problem $X$ is $\omega(n)$  %%%%%%%%%%y
+    
+    g.\underline{\ \ \ \ Y \ \ \ \ } Problem $X$ is $O(n^3)$ 
+    
+    h.\underline{\ \ \ \ Y \ \ \ \ } Problem $X$ is $o(n^2)$ %%%%%%%%%%%%%n
+
+    i.\underline{ \ \ \ \ Y\ \ \ \ } Implementation Y is $\Omega(n)$
+    
+    j.\underline{ \ \ \ \ N \ \ \ \ } Implementation X is $\omega(n)$
+
+    
+    \end{multicols}
+    \begin{sol}
+    a. It has an implementation is an upper bound on the problem, but is is not necessarily a tight upper bound.\\
+    b. The same reason as a.  \\
+    c. It has a tight x the top bound for both of them, so that makes that really easy.\\
+    d. $I_z$ just an upper bound here, it can even have an upper bound of $log(n)$, it is not a tight bound. \\
+    e. Problem $X$ could have a tight lower bound. \\
+    f. Problem $X$ has an upper bound of $n$, but this is the implementation is the $\Theta(n)$, not the problem. So $\omega(n)$ is required to be a loose bound. So an upper bound on the Implementation is an upper bound of the problem. It cannot be an asymptotically loose lower bound on the problem. \\
+    g. Problem x has an upper bound of $n$, but also has an upper bound of $n^3$.\\
+    h. It has an upper bound at the $n$, so it's going to have non-tied upper bound of $n^2$\\
+    i. It has a lower bound of $2^n$, but it also has a lower bound of $n^3, n^2, n$ 
+    \end{sol}
+
+    \item \ [2 pts] How many edges exist in:
+    \begin{enumerate}[i]
+        \item A complete graph of $|V|$ vertices 
+        \begin{sol}
+        \begin{align*}
+            C_{|V|}^2= \frac{(|V|)!}{2![(|V|-2]!} = \frac{(|V|)!}{2(|V|-2)!} = \frac{(|V|)(|V|-1)}{2}
+        \end{align*}
+        \end{sol}
+        \item A cycle of $|V|$ vertices 
+        \begin{sol}
+        \begin{align*}
+            |V|
+        \end{align*}
+        \end{sol}
+        \item A Tree of $|V|$ vertices 
+        \begin{sol}
+        \begin{align*}
+            |V-1|
+        \end{align*}
+        \end{sol}
+        \item A complete bi-partite graph $B_{j,k}$ with $j$ vertices on one part and $k$ vertices on the other part. 
+        \begin{sol}
+        \begin{align*}
+            j \times k
+        \end{align*}
+        \end{sol}
+    \end{enumerate}
+
+    \item \ [2 pts] Find an integer for $n$ modulo 14635 that satisfies the following equation. Note that you may use the following: $1/2793 \ \% \ 14635$ is $2047$:
+    \begin{align*}
+        (2793n + 91) \ \% \ 14635 = 1374
+    \end{align*}
+    \begin{sol}
+        \begin{align*}
+         (2793n + 91) \ \%  \ 14635 & = 1374 \\  
+         (2793n) \ \% \ 14635 + 91 \ \% \ 14635 & = 1374 \\
+         2793n \ \%  \ 14635 + 91 &= 1374 \\ 
+         2793n \ \% \ 14635 &= 1283 
+        \end{align*}
+    \begin{align*}
+        &\because \frac{1}{2793} \ \% \ 14635 = 2047\\
+        &\therefore (\frac{1}{2793} \times 2793n) \ \% \ 14635 = (2047 \times 1283) \ \% \ 14635  \\
+        &\therefore n \ \% \ 14635 = (2626301)  \ \% \ 14635 = 6636 \\
+        &\therefore n = 14635 \times i + 6636, i \ is \ integer \\
+    \end{align*}
+    \end{sol}
+ \end{enumerate}
+
+\end{document}

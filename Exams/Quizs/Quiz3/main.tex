@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+ 
+\newenvironment{sol}[1][Solution]{\begin{trivlist}\item[\hskip\labelsep {\bfseries #1:}]}{\end{trivlist}}
+\usepackage{minted}
+%\usemintedstyle{perldoc}
+\usemintedstyle{vs}
+\usepackage{graphicx}
+\graphicspath{./}
+\usepackage{diagbox}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage{latexsym}
+\usepackage{times,url}     % 字体
+\usepackage{cprotect}
+\usepackage{listings}
+
+\usepackage{tikz-qtree}
+\usepackage{forest}
+ 
+
+\begin{document}
+\renewcommand{\qedsymbol}{\filledbox}
+\begin{center}
+    \textbf{CS 5/7350} \\
+    \textbf{Quiz \#2 Due Mar 1 for Completion Grade}
+%replace X with the appropriate number
+\end{center}
+\begin{flushright}
+\underline{Name \& ID: Bingying Liang \ 
+48999397 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS5350? Yes / No $\surd$}
+\end{flushright}
+\begin{enumerate}
+    \item \ [1 pt] Argue that the problem, S, of sorting an unsorted array of integers of length greater than 100 elements is at least as hard - and maybe even harder - than the problem, L, of finding the ten largest elements of the same unsorted array of integers.
+    \begin{sol}
+    \hspace*{\fill}\\
+    S is at least as hard and maybe even harder than the problem L. \\
+    Because if solve the problem S, and then can use the solution of S to solve the problem L which means the solution of problem L is based on the solution of S.
+    \end{sol}
+
+    \item \ [2 pts] A tree has the following In-Order and Pre-Order traversals. Draw the tree
+    \begin{align*}
+        \text{In Order: A X R M B L H P Z S Q}\\
+        \text{Pre Order: M R A X P L B H Q Z S}
+    \end{align*}
+    \begin{sol}
+    \hspace*{\fill}\\
+    \begin{align*}
+    \begin{tikzpicture}[level/.style={sibling distance=45mm/#1}]
+    \node{M}
+    child { node{R} 
+            child { node{A} 
+                    child[missing]
+                    child{ node{X}}
+                  }
+            child[missing]
+          }
+    child { node{P}
+            child { node{L}
+                    child{ node {B}}
+                    child{ node {H}}
+                    }
+            child { node{Q}
+                    child{ node{Z}
+                           child[missing]
+                           child{ node{S}}
+                         }
+                    child[missing]
+                    }
+        };
+    \end{tikzpicture}
+    \end{align*}
+
+    \end{sol}
+    
+    \item \ [1 pts] Answer the following 3 questions:
+    \begin{enumerate}
+        \item How much entropy does an entire message with 40A's and 60 B's have?
+        \begin{sol}
+        \begin{align*}
+            &A: p_A = \frac{40}{100} = \frac{2}{5}, \log_2{\frac{1}{p_A}} = \log_2{\frac{1}{\frac{2}{5}}} = \log_2{\frac{5}{2}} \ bits \\
+            &B: p_B = \frac{60}{100} = \frac{3}{5}, \log_2{\frac{1}{p_B}} = \log_2{\frac{1}{\frac{3}{5}}} = \log_2{\frac{5}{3}} \ bits \\
+            &Total = 40 \times \log_2(\frac{5}{2}) + 60 \times \log_2(\frac{5}{3}) \approx 97.095\  bits
+        \end{align*}
+        \end{sol}
+        \item How much entropy does an entire message with 50A's and 50 B's have?
+        \begin{sol}
+        \begin{align*}
+            &A: p_A = \frac{50}{100} = \frac{1}{2}, \log_2{\frac{1}{p_A}} = \log_2{\frac{1}{\frac{1}{2}}} = \log_2{2}=1 \ bits \\
+            &B: p_B = \frac{50}{100} = \frac{1}{2}, \log_2{\frac{1}{p_B}} = \log_2{\frac{1}{\frac{1}{2}}} = \log_2{2}=1 \ bits \\
+            &Total = 50 \times 1 + 50 \times 1 = 100 \ bits
+        \end{align*}
+        \end{sol}
+    \end{enumerate}
+    \item \ [2 pts] You have a complete graph with $|V|$ vertices where $|V|$ is $ \geq 2$. Each edge in this graph has a capacity of 7. You pick one vertex as the Start Vertex, S, and another vertex as the Sink Vertex, T. Since the is a complete graph, you will get the same answer regardless of which two vertices you pick. Answer the following questions:
+    \begin{enumerate}
+        \item What is the length of the shortest path between Vertex S and Vertex $T$
+        \begin{sol}
+        \hspace*{\fill}\\
+        Edge of Vertex $S$ and Vertex $T$, i.e. $E(S, T)$.\\
+        Because it is a complete graph, it must have an edge between vertex $V$ and Vertex $T$.
+        \end{sol}
+        \item What is the maximum flow (in terms of $|V|$) between Vertex S and Vertex T
+        \begin{sol}
+        \begin{align*}
+            (|V|-1) \times 7
+        \end{align*}
+        \end{sol}
+        \item What is the weight of the minimum spanning tree of the graph? 
+        \begin{sol}
+        \begin{align*}
+            (|V| - 1) \times 7
+        \end{align*}
+        \end{sol}
+    \end{enumerate}
+\end{enumerate}
+\end{document}

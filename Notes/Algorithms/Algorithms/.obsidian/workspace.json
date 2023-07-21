@@ -1,0 +1,168 @@
+{
+  "main": {
+    "id": "ca61d2cf115eab54",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e033c49e473bd74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "991bb4cac22abb61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dynamic Programming/Dynamic Programming.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a252cf4251b26ae3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lempel-Ziv-Welch (LZW).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "55e77d6ad8bd6ae2",
+    "type": "split",
+    "children": [
+      {
+        "id": "aae72b64e7a92ed7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "952f8eda726817b3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "90d0682c8374da5b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "274b21936c3977cb",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "267cb438f9f9931f",
+    "type": "split",
+    "children": [
+      {
+        "id": "a7c2e4c3345b8ecf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9fda148b69f30d13",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Lempel-Ziv-Welch (LZW).md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b5a16ec933e7bde2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Lempel-Ziv-Welch (LZW).md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3417f71a3fd6d37f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "5e79cb88442e5e27",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Lempel-Ziv-Welch (LZW).md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "a252cf4251b26ae3",
+  "lastOpenFiles": [
+    "Dynamic Programming/Dynamic Programming.md",
+    "Lempel-Ziv-Welch (LZW).md",
+    "Dynamic Programming"
+  ]
+}

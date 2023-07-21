@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+ 
+\newenvironment{sol}[1][Solution]{\begin{trivlist}\item[\hskip\labelsep {\bfseries #1:}]}{\end{trivlist}}
+\usepackage{minted}
+%\usemintedstyle{perldoc}
+\usemintedstyle{vs}
+\usepackage{graphicx}
+\graphicspath{./}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{times,url}
+
+\begin{document}
+\renewcommand{\qedsymbol}{\filledbox}
+\begin{center}
+    \textbf{CS 5/7350} \\
+    \textbf{Quiz \#1 Due Feb 22 for Completion Grade}
+%replace X with the appropriate number
+\end{center}
+\begin{flushright}
+\underline{Name \& ID: Bingying Liang \ 
+48999397 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CS5350? Yes / No $\surd$}
+\end{flushright}
+
+\begin{enumerate}
+    \item \ [1 pt] Given that $(2^n) \% M = 33 $ and M is $> 100$. Given the value for $(2^{n+1})\% M $ \underline{\ \ 66 \ \ }
+    \begin{sol}
+        %\hspace*{\fill} \\
+        \begin{align*}
+        & \because (2^{n}) \% M = 33 \\
+        & \therefore 2^{n + 1} \% M =  (2^n \times 2^1) \% M = (2^n \% M) \times (2^1 \% M) = 33 \times (2 \% M)\\
+        & \because M > 100 \\
+        & \therefore 2 \% M = 2 \\
+        & \therefore 2^{n+1} \% M = 33 \times 2 = 66
+        \end{align*}
+    \end{sol}
+
+    \item \ [2 pt] Consider the following function:
+    \begin{minted}[framesep=2mm,baselinestretch=1.2,fontsize=\footnotesize]{text}
+    #include <stdio.h>
+    function (int n)
+    {
+        product = 1;
+        for (i = 1; i <= n; i++){
+            for (j = 1; j <= i; j++){
+                product = product * j;
+            }
+        }
+        printf("%d\n", proudct);
+    }
+\end{minted}
+    \begin{enumerate}
+        \item Write a function for the number of multiplications performed vs $n$.
+        \begin{sol}
+        \begin{align*}
+            f(n) = (1 + 2 + 3 + \dots + n)  =  \frac{n(1+n)}{2} 
+        \end{align*}
+        \end{sol}
+        
+        \item What is the asymptotic running time of the code using "multiplication" as a basic element.
+        
+        \begin{sol}
+        \begin{align*}
+        & \lim_{n \rightarrow{\infty}}\frac{n(1+n)}{2} = \Theta(n^2)  
+        \end{align*}
+        \end{sol}
+    \end{enumerate}
+
+
+    \item \ [2 pts] A program can process 3000 item in 11 seconds.
+    \begin{enumerate}
+        \item About how long would it take to process 15000 items if the function describing the running time is bounded by $\Theta(n)$?
+        \begin{sol}
+        \begin{align*}
+            &\because \Theta{(n)}, 3000 \ items \ in \ 11 \ seconds\\
+            &\therefore \frac{15000}{3000} = 5 \\
+            &\therefore time = 5 \times 11 = 55 \ seconds
+        \end{align*}
+        \end{sol}
+
+        \item About how long would it take to process 15000 items if the function describing the running time is bounded by $\Theta(n^3)$?
+        \begin{sol}
+            \begin{align*}
+            &\because \Theta{(n^3)}, 3000 \ items \ in \ 11 \ seconds\\
+            &\therefore \frac{15000^3}{3000^3} = (\frac{15000}{3000})^3 = (5)^3 = 125 \\
+            &\therefore time = 125 \times 11 = 1375 \ seconds
+            \end{align*}
+        \end{sol}
+
+        \item About how long would it take to process 15000 items if the function describing the running time is bounded by $\Theta(2^n)$
+        \begin{sol}
+            \begin{align*}
+            &\because \Theta{(2^n)}, 3000 \ items \ in \ 11 \ seconds\\
+            &\therefore \frac{2^{15000}}{2^{3000}} = 2^{15000-3000}=2^{12000} \\
+            &\therefore time = 2^{12000} \times 11 \ seconds
+            \end{align*}
+        \end{sol}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
